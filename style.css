@@ -346,7 +346,8 @@ body { height: 100vh; overflow: hidden; background: #fff; }
   color: var(--text);
 }
 .panel-item--active:hover { background: #fff; }
-.page-item--drop-before { border-top: 2px solid var(--active-color); }
+.page-item--drop-before { border-top: 2px solid var(--active-color); margin-top: -2px; }
+.page-item--drop-after  { border-bottom: 2px solid var(--active-color); margin-bottom: -2px; }
 .page-item--drop-child  { background: rgba(255,255,255,.6); outline: 1px dashed var(--active-color); }
 
 .add-btn {
@@ -365,6 +366,31 @@ body { height: 100vh; overflow: hidden; background: #fff; }
 /* Page tree */
 .page-item-wrap { display: flex; flex-direction: column; }
 .page-item { padding-right: 10px; }
+
+/* Tree guide lines — L-shaped connectors with vertical continuity */
+.subpages { position: relative; }
+.subpages > .page-item-wrap { position: relative; }
+.subpages > .page-item-wrap::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--depth, 0) * 12px + 3px);
+  top: 0;
+  height: 12px;
+  width: 17px;
+  border-left: 1px solid rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  border-bottom-left-radius: 4px;
+  pointer-events: none;
+}
+.subpages > .page-item-wrap:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--depth, 0) * 12px + 3px);
+  top: 12px;
+  bottom: 0;
+  border-left: 1px solid rgba(0,0,0,0.25);
+  pointer-events: none;
+}
 .page-expand { width: 16px; flex-shrink: 0; font-size: 11px; color: var(--muted); cursor: pointer; }
 .page-title-text { overflow: hidden; text-overflow: ellipsis; }
 .page-title-edit {
@@ -374,7 +400,7 @@ body { height: 100vh; overflow: hidden; background: #fff; }
   font-size: inherit;
   line-height: inherit;
   padding: 0;
-  margin: 0;
+  margin: 0 0 -1px 0;
   border: none;
   border-bottom: 1px solid var(--active-color);
   border-radius: 0;
@@ -555,7 +581,6 @@ body { height: 100vh; overflow: hidden; background: #fff; }
   pointer-events: none;
   transition: border-color .1s;
 }
-.block:hover { z-index: 9999 !important; }
 .block:hover::before { border-color: #d8dce0; }
 .block--selected::before { border-color: var(--active-color) !important; background: rgba(26,115,232,.03); }
 
