@@ -1114,6 +1114,7 @@ body { height: 100vh; overflow: hidden; background: #fff; }
 
 .fmt-btn--wand { font-size: 14px; cursor: grab; }
 .fmt-btn--wand:active { cursor: grabbing; }
+.fmt-btn.publishing { opacity: 0.5; pointer-events: none; }
 
 .claude-chat {
   position: fixed;
