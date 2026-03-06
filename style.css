@@ -458,7 +458,7 @@ body { height: 100vh; overflow: hidden; background: #fff; }
 /* ── Page title ───────────────────────────────────── */
 
 #page-title-bar {
-  padding: 16px 24px 10px;
+  padding: 16px 0 10px;
   flex-shrink: 0;
   cursor: text;
 }
@@ -471,7 +471,7 @@ body { height: 100vh; overflow: hidden; background: #fff; }
   min-width: 300px;
   border: 1.5px dotted #bbb;
   border-radius: 6px;
-  padding: 4px 12px;
+  padding: 4px 8px;
   line-height: 1.2;
   white-space: nowrap;
   cursor: text;
@@ -1438,3 +1438,41 @@ body { height: 100vh; overflow: hidden; background: #fff; }
   color: var(--muted);
   font-size: 13px;
 }
+
+/* ── Brand Header (browser view mode) ─────────── */
+
+#brand-header {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  background: linear-gradient(135deg, #1a73e8 0%, #4a9af5 100%);
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.brand-tagline {
+  font-size: 11px;
+  color: rgba(255,255,255,.7);
+  font-style: italic;
+}
+
+/* ── Page visibility eye toggle ──────────────── */
+
+.page-eye {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.35;
+  transition: opacity .15s;
+}
+.page-item:hover .page-eye { opacity: 0.7; }
+.page-eye:hover { opacity: 1 !important; }
+.page-eye--hidden { opacity: 0.7; }
